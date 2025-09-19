@@ -696,7 +696,7 @@ fieldset {
 .partners-item {
 	border: 1px solid #CDCDCD;
 	border-radius: 5px;
-	padding: 0 88px;
+	padding: 0 68px;
 	height: 85px;
 	display: flex;
 	justify-content: center;
@@ -756,10 +756,14 @@ fieldset {
 	padding-right: 60px;
 	margin-right: 60px;
 }
-.input-50 {
+.input-50 p {
 	display: flex;
 	column-gap: 20px;
 	margin-bottom: 20px;
+}
+
+.input-50 br {
+	display: none;
 }
 .input-50 input,
 .input-50 select {
@@ -826,6 +830,11 @@ fieldset {
 	width: 100%;
 	height: 225px;
 	border-radius: 5px;
+}
+
+.wpcf7 form .wpcf7-response-output{
+	text-align: center;
+	border-radius: 8px;
 }
 /* Form END */
 
