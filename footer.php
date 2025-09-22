@@ -16,59 +16,77 @@
 			<div class="footer-row">
 				<div class="footer-left">
 					<div class="footer-logo">
-						<a href="index.html"><img src="images/logo.svg" alt="Ecovista"></a>
+                        <?php the_custom_logo(); ?>
 					</div>
+                    <?php if (get_theme_mod('footer_text_left')):?>
 					<div class="footer-desc">
-						<p>Откройте двери к утонченному миру природной красоты с нашими услугами по ландшафтному дизайну</p>
+						<p><?php echo get_theme_mod('footer_text_left',''); ?></p>
 					</div>
+					<?php endif; ?>
 					<div class="footer-social">
-						<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
-						<a href="https://whatsapp.com" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                        <?php if (get_theme_mod('footer_twitter')):?>
+                            <a href="<?php echo get_theme_mod('footer_twitter',''); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <?php endif; ?>
+                        <?php if (get_theme_mod('footer_whatsapp')):?>
+                            <a href="<?php echo get_theme_mod('footer_whatsapp',''); ?>" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                        <?php endif; ?>
 					</div>
 				</div>
 				<div class="footer-right">
 					<nav class="footer-nav">
-						<h4>Навигация</h4>
-						<ul>
-							<li><a href="#block-about" class="anchor-link">О нас</a></li>
-							<li><a href="#block-services" class="anchor-link">Услуги</a></li>
-							<li><a href="#block-gallery" class="anchor-link">Галерея</a></li>
-							<li><a href="#block-features" class="anchor-link">Преимущества</a></li>
-							<li><a href="#block-team" class="anchor-link">Команда</a></li>
-							<li><a href="#block-contacts" class="anchor-link">Контакты</a></li>
-						</ul>
+						<h4>Menu</h4>
+                            <?php
+                            wp_nav_menu(
+                                array(
+                                    'theme_location' => 'menu-footer',
+                                    'menu_id'        => 'menu-footer',
+                                    'menu_container' => false,
+                                )
+                            );
+                            ?>
 					</nav>
 					<nav class="footer-nav">
-						<h4>Услуги</h4>
-						<ul>
-							<li><a href="#block-services" class="anchor-link">Индивидуальный <br> дизайн сада</a></li>
-							<li><a href="#block-services" class="anchor-link">Экологическая зеленая <br> архитектура</a></li>
-							<li><a href="#block-services" class="anchor-link">Проектирование и <br> планировка садов</a></li>
-							<li><a href="#block-services" class="anchor-link">Системы автоматического <br> полива и освещения</a></li>
-						</ul>
+						<h4>Services</h4>
+                        <?php
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'menu-services',
+                                'menu_id'        => 'menu-services',
+                                'menu_container' => false,
+                            )
+                        );
+                        ?>
 					</nav>
 					<div class="footer-nav">
-						<h4>Контакты</h4>
+						<h4>Our Contacts</h4>
 						<div class="footer-info">
-							<a href="tel:+7 950 457 5654" class="footer-info-item">
+                            <?php if (get_theme_mod('footer_phone')):?>
+							<a href="<?php echo get_theme_mod('footer_phone_link','ecovista'); ?>" class="footer-info-item">
 								<span class="footer-info-icon"><i class="fa fa-phone"></i></span>
-								<span>+7 950 457 5654</span>
+								<span><?php echo get_theme_mod('footer_phone',''); ?></span>
+                            <?php endif; ?>
 							</a>
 							<div class="footer-info-item">
-								<span class="footer-info-icon"><i class="fa fa-map-marker"></i></span>
-								<span>Хаас Авеню, Торранс 86</span>
-							</div>
-							<div class="footer-info-item">
+                                <?php if (get_theme_mod('footer_email')):?>
 								<span class="footer-info-icon"><i class="fa fa-envelope"></i></span>
-								<span>ecovista@gmail.com</span>
+								<a href="<?php echo get_theme_mod('footer_email_link','ecovista'); ?>"><?php echo get_theme_mod('footer_email','ecovista'); ?></a>
+                                <?php endif; ?>
 							</div>
+                            <div class="footer-info-item">
+                                <?php if (get_theme_mod('footer_address')):?>
+                                    <span class="footer-info-icon"><i class="fa fa-map-marker"></i></span>
+                                    <a href="<?php echo get_theme_mod('footer_address_link','ecovista'); ?>" target="_blank"><?php echo get_theme_mod('footer_address','ecovista'); ?></a>
+                                <?php endif; ?>
+                            </div>
 						</div>
 					</div>
 				</div>
 			</div>
 
 			<div class="footer-copyright">
-				2024 © Evovista Все права защищены
+                <?php if (get_theme_mod('footer_copyright')):?>
+                    <?php echo date('Y'); ?> <?php echo get_theme_mod('footer_copyright','ecovista'); ?>
+                <?php endif; ?>
 			</div>
 		</div>
 	</footer>

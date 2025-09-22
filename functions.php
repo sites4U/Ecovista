@@ -50,6 +50,8 @@ function ecovista_setup() {
 	register_nav_menus(
 		array(
 			'menu-header' => esc_html__( 'Menu Header', 'ecovista' ),
+            'menu-footer' => esc_html__( 'Menu Footer', 'ecovista' ),
+            'menu-services' => esc_html__( 'Menu Services', 'ecovista' ),
 		)
 	);
 
@@ -246,7 +248,7 @@ function custom_customize_register($wp_customize) {
 
 // Footer Fields START
 	$wp_customize->add_section('footer_section', array(
-		'title'    => esc_html__('Подвал сайта', 'ecovista'),
+		'title'    => esc_html__('Footer', 'ecovista'),
 		'priority' => 11,
 	));
 
@@ -256,7 +258,7 @@ function custom_customize_register($wp_customize) {
 		'sanitize_callback'   => 'sanitize_text_field',
 	));
 	$wp_customize->add_control('footer_text_left', array(
-		'label'    => esc_html__('Текст в подвале', 'ecovista'),
+		'label'    => esc_html__('Footer text', 'ecovista'),
 		'section'  => 'footer_section',
 		'type'     => 'textarea',
 	));
@@ -268,7 +270,18 @@ function custom_customize_register($wp_customize) {
 		'sanitize_callback'   => 'sanitize_text_field',
 	));
 	$wp_customize->add_control('footer_phone', array(
-		'label'    => esc_html__('Телефон', 'ecovista'),
+		'label'    => esc_html__('Phone', 'ecovista'),
+		'section'  => 'footer_section',
+		'type'     => 'text',
+	));
+
+    // Footer Phone Link START
+	$wp_customize->add_setting('footer_phone_link', array(
+		'default'   => '',
+		'sanitize_callback'   => 'sanitize_text_field',
+	));
+	$wp_customize->add_control('footer_phone_link', array(
+		'label'    => esc_html__('Phone Link', 'ecovista'),
 		'section'  => 'footer_section',
 		'type'     => 'text',
 	));
@@ -280,7 +293,18 @@ function custom_customize_register($wp_customize) {
 		'sanitize_callback'   => 'sanitize_text_field',
 	));
 	$wp_customize->add_control('footer_address', array(
-		'label'    => esc_html__('Адрес', 'ecovista'),
+		'label'    => esc_html__('Address', 'ecovista'),
+		'section'  => 'footer_section',
+		'type'     => 'text',
+	));
+	// Footer Address END
+
+	$wp_customize->add_setting('footer_address_link', array(
+		'default'   => '',
+		'sanitize_callback'   => 'sanitize_text_field',
+	));
+	$wp_customize->add_control('footer_address_link', array(
+		'label'    => esc_html__('Address Link', 'ecovista'),
 		'section'  => 'footer_section',
 		'type'     => 'text',
 	));
@@ -297,6 +321,40 @@ function custom_customize_register($wp_customize) {
 		'type'     => 'text',
 	));
 	// Footer Email END
+
+	$wp_customize->add_setting('footer_email_link', array(
+		'default'   => '',
+		'sanitize_callback'   => 'sanitize_text_field',
+	));
+	$wp_customize->add_control('footer_email_link', array(
+		'label'    => esc_html__('Email Link', 'ecovista'),
+		'section'  => 'footer_section',
+		'type'     => 'text',
+	));
+
+    // Footer Twitter START
+    $wp_customize->add_setting('footer_twitter', array(
+        'default'   => '',
+        'sanitize_callback'   => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('footer_twitter', array(
+        'label'    => esc_html__('Twitter', 'ecovista'),
+        'section'  => 'footer_section',
+        'type'     => 'text',
+    ));
+    // footer Twitter END
+
+    // footer Whatsapp START
+    $wp_customize->add_setting('footer_whatsapp', array(
+        'default'   => '',
+        'sanitize_callback'   => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('footer_whatsapp', array(
+        'label'    => esc_html__('Whatsapp', 'ecovista'),
+        'section'  => 'footer_section',
+        'type'     => 'text',
+    ));
+    // Footer Whatsapp END
 
 	// Footer Copyright START
 	$wp_customize->add_setting('footer_copyright', array(
@@ -329,6 +387,8 @@ add_filter('nav_menu_link_attributes', 'add_menu_link_class', 10, 3);
 /** Add Class for menu links END */
 
 
+
+/** Unyson Fremwork */
 if ( ! function_exists( '_mwt_fw_filter_github_api_url' ) ) :
 	function _mwt_fw_filter_github_api_url( $url ) {
 		return 'https://api.github.com';
